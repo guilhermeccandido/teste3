@@ -1,0 +1,133 @@
+    <div class="container top">
+		  <ol class="breadcrumb">
+	        <li>
+	          <a href="<?php echo site_url("admin"); ?>">
+	            <?php echo ucfirst($this->uri->segment(1));?>
+	          </a> 
+	          
+	        </li>
+	        <li class="active">
+	          <?php echo ucfirst($this->uri->segment(2));?>
+	        </li>
+	      </ol>
+	      <div class="page-header users-header">
+    		<h2>
+              <?php echo ucfirst($this->uri->segment(2));?>
+              <a  href="<?php echo site_url("admin").'/'.$this->uri->segment(2); ?>/add" class="btn btn-success">Adicionar</a>
+            </h2>
+          </div>
+	  <div class="row">
+        <div class="span12 columns">
+          <div class="well">
+           
+            <?php
+           
+            $attributes = array("class" => "form-inline reset-margin", "id" => "myform");
+           
+            $options_local = array();
+            foreach($local as $row){
+            	$options_local[$row['id']] = $row['titulo'];
+            }
+            
+            //save the columns names in a array that we will use as filter         
+            $options_usuarios = array();    
+            foreach ($usuarios as $array) {
+              foreach ($array as $key => $value) {
+                $options_usuarios[$key] = $key;
+              }
+              break;
+            }
+
+            echo form_open("admin/usuarios", $attributes);
+     
+              echo form_label("Buscar:", "search_string");
+              echo form_input("search_string", $search_string_selected, 'class="form-control"');
+
+              echo form_label("Ordenar por:", "order");
+              echo form_dropdown("order", $options_usuarios, $order, 'class="form-control"');
+
+              $data_submit = array("name" => "mysubmit", "class" => "btn btn-primary", "value" => "Go");
+
+              $options_order_type = array("Asc" => "Asc", "Desc" => "Desc");
+              echo form_dropdown("order_type", $options_order_type, $order_type_selected, 'class="form-control"');
+
+              echo form_submit($data_submit);
+
+            echo form_close();
+            ?>
+
+          </div>
+          <table class="table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+            	<th class="header">#</th>
+            	<th class="yellow header headerSortDown">Instituição</th>
+            	<th class="yellow header headerSortDown">Login</th>
+            	<th class="yellow header headerSortDown">Nome</th>
+            	<th class="yellow header headerSortDown">Local</th>
+            	<th class="yellow header headerSortDown">Email</th>
+	    				</tr>
+	            </thead>
+	            <tbody>
+	              <?php
+	             // print_r($usuarios);
+	             // die;
+	              foreach($usuarios as $row)
+	              {
+	                echo "<tr>";
+	                echo "<td>".$row["id_usuario"]."</td>";
+	                echo "<td>".$row["instituicao"]."</td>";
+	                echo "<td>".$row["login"]."</td>";
+	                echo "<td>".$row["nome"]."</td>";
+	                echo "<td>".$options_local[$row["id_local_execucao"]]."</td>";
+	                echo "<td>".$row["email"]."</td>";
+	          echo '<td class="crud-actions">
+                  <a href="'.site_url("admin").'/usuarios/update/'.$row['id_usuario'].'" class="btn btn-info" style="width: 130px;" >view & edit</a>  
+              	  <a href="'.site_url("admin").'/usuarios_modulos/'.$row['id_usuario'].'" class="btn btn-info" style="width: 130px;" >Módulos</a>
+				  <a href="'.site_url("admin").'/usuarios_contratos/'.$row['id_usuario'].'" class="btn btn-info" style="width: 130px;" >Contratos</a>
+                  <a href="#myModal" class="btn btn-danger" data-toggle="modal" style="width: 130px;" onclick="open_modal('.$row['id_usuario'].');" >deletar</a>
+                </td>';
+                echo "</tr>";
+              }
+              
+              echo ' <div id="myModal" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+							 <div class="modal-content">
+							  <div class="modal-header">
+							    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							    <h3>Deleção de Registro</h3>
+							  </div>
+							  <div class="modal-body">
+							    <p>Você realmente gostaria de Deletar esse Registro?</p>
+							  </div>
+							  <div class="modal-footer">
+							    <a id ="actionModal" href="" class="btn btn-danger">Deletar</a>
+							    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							  </div>
+							 </div>
+						    </div>
+						   </div>';
+              ?>      
+            </tbody>
+          </table>
+
+          <?php echo '<div class="pagination">'.$this->pagination->create_links().'</div>'; ?>
+
+      </div>        
+     </div>
+     
+<script>
+		
+		function open_modal(id){
+			$("#actionModal").attr("href", "usuarios/delete/"+id);
+		};
+
+		$(function(){
+			  $("table").tablesorter({
+			    onRenderHeader: function(){
+			      this.prepend('<span class="icon"></span>');
+			    }
+			  });
+			});
+		
+</script>

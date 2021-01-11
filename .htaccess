@@ -1,0 +1,27 @@
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	#RewriteBase /
+	RewriteCond $1 !^(index\.php|images|robots\.txt|css|fonts|js|pdf|assets)	
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php?/$1 [L]
+	RewriteCond %{REQUEST_URI} ^/system.*
+</IfModule>
+
+
+<IfModule mod_expires.c>
+	<FilesMatch "\.(ico|jpg|jpeg|png|gif|css|js|pdf|assets)$">
+		ExpiresActive On
+		ExpiresDefault "access plus 1 days"
+	</FilesMatch>
+</IfModule>
+
+
+<IfModule !mod_rewrite.c>
+  # If we don't have mod_rewrite installed, all 404's
+  # can be sent to index.php, and everything works as normal.
+  # Submitted by: ElliotHaughin
+
+  ErrorDocument 404 /index.php
+</IfModule>
