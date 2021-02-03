@@ -30,17 +30,15 @@ class User extends App_controller {
     * check the username and the password with the database
     * @return void
     */
-	function validate_credentials()
-	{	
+	function validate_credentials($login)
+	{
 		
 		$dadosPagina = array();
-		$login = $this->input->post('login');
-		$senha = $this->input->post('senha');
 		
 		$this->load->model('usuario');
 		$usuario = new Usuario();
-		$validaAcesso = $usuario->confirmarCredenciais($login,$senha);
-		
+		$validaAcesso = $usuario->confirmarCredenciais($login);
+
 		if($validaAcesso){
 		
 			$dados = $usuario->criarSessao($login);

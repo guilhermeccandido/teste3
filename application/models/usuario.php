@@ -148,17 +148,14 @@ class Usuario extends App_DAO{
 	
 	/**
 	* Funcao que verifica login do usuario.
-	* @param $nomeUsuario nome de login do usuario.
-	* @param $senha a senha do usuario.
+	* @param $nomeUsuario email do usuario.
 	* @return TRUE se o login foi efetuado com sucesso, FALSE do contrario
 	**/
-	public function confirmarCredenciais($login,$senha)
+	public function confirmarCredenciais($login)
 	{
 
 		$this->load->database();
-		$strQry =  "SELECT nome FROM usuario WHERE login = ".$this->db->escape($login)." AND 
-		    senha = ".$this->db->escape(sha1($senha));
-		
+		$strQry =  "SELECT nome FROM usuario WHERE email = ".$this->db->escape($login);
 			
 		$query = $this->db->query($strQry);
 
@@ -177,7 +174,7 @@ class Usuario extends App_DAO{
 	* O metodo criar um array com os dados para retornar ao controller com o objetivo de criar uma sessao.
 	* As sessoes nao ficam armazenadas em cookies e sim no banco de dados na tabela ci_sessions.
 	* Por motivos obvios de seguranca, utilizar somente se o usuario a logar for aprovado pelo metodo confirmarCredenciais()
-	* @param $login nome do usuario para login
+	* @param $login email do usuario para login
 	* @return array contendo informacoes para sessao
 	*/
 	public function criarSessao($login)
@@ -185,7 +182,7 @@ class Usuario extends App_DAO{
 
     	$this->load->database();
     	$query = $this->db->query("SELECT u.nome, u.login, u.id_usuario FROM usuario u
-    	    WHERE login = ".$this->db->escape($login));
+    	    WHERE email = ".$this->db->escape($login));
     	$registro = $query->row();
     	$dadosSessao = array(
     	'id' 	=> $registro->id_usuario,

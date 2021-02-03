@@ -2,6 +2,16 @@
 
 /*
 |--------------------------------------------------------------------------
+| Dados para autenticação no servidor "Identidade"
+|--------------------------------------------------------------------------
+*/
+$config['oauth2_host'] = 'https://servicos.dnit.gov.br/identidade';
+$config['oauth2_client_id'] = 'evteateste';
+$config['oauth2_secret_key'] = 'Senha123$';
+$config['oauth2_call_back'] = 'http://localhost/ste/sgplan-evtea/signin_oidc';
+
+/*
+|--------------------------------------------------------------------------
 | Base Site URL
 |--------------------------------------------------------------------------
 |
@@ -15,7 +25,6 @@
 |
 */
 $config['base_url']	= 'https://servicos.dnit.gov.br/sgplan/';
-//$config['base_url']	= 'http://10.100.11.112:8081/sgplan/';
 
 /*
 |--------------------------------------------------------------------------

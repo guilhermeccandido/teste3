@@ -177,95 +177,32 @@
             		}
             		echo '</ul>';
             		echo '</li>';
-            	}
-            	
-            	/* 
-            	<li id="menu-item-26" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-26 dropdown"><a title="Blog" href="#" data-toggle="dropdown" class="dropdown-toggle">Blog <span class="caret"></span></a>
-					<ul role="menu" class=" dropdown-menu">
-						<li id="menu-item-36" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36"><a title="Blog" href="http://razonartificial.com/themes/openmind/wordpress/blog/">Blog</a></li>
-						<li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38"><a title="Blog Left Sidebar" href="http://razonartificial.com/themes/openmind/wordpress/blog-left-sidebar/">Blog Left Sidebar</a></li>
-						<li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37"><a title="Blog Full" href="http://razonartificial.com/themes/openmind/wordpress/blog-full/">Blog Full</a></li>
-					</ul>
-				</li>
-				*/
+            	}            	
 				?>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-			<?php
-				
-				if(isset($logout)){
-				?>
-				
-					<li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35">
-	            		<a title="Logout" href="<?php echo base_url()."admin/logout_home"?>"><?php echo (isset($nomeUsuario) ? $nomeUsuario." - " : ''); ?>Logout</a>
-	            	</li>
-	            	
-				<?php 	
-				}else{
-					
-
-				?>
-					
-					<li class="dropdown <?php /* open*/?>">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" <?php /*aria-expanded="true"*/ ?> >Login</a>
-						<div class="dropdown-menu dropdown-login animated fadeInUp">
-						<?php
-							$attributes = array('id' => 'myform');
-							echo form_open('admin/login/validate_credentials_temp', $attributes);
-							/*
-							 <form role="form" name="loginform" id="loginform" action="admin/login/validate_credentials_temp" method="post">
-							*/
-							?>
-                            <h4 class="section-title">Login</h4>
-                    
-                            <div class="form-group">
-                                <div class="input-group login-input">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Login" name="login" id="user_login">
-                                </div>
-                                <br>
-                                <div class="input-group login-input">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input type="password" class="form-control" placeholder="Senha" name="senha" id="user_pass">
-                                </div>
-                                <br/>
-                                <a href="<?php echo base_url('esqueci_minha_senha');?>">Esqueci minha senha.</a>
-                                <!-- 
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"  name="rememberme" id="rememberme" value="forever" tabindex="90"> Remember me
-                                    </label>
-                                </div>
-                                 -->
-                                <?php 
-                                echo form_submit('submit', 'Login', 'class="btn btn-primary pull-right"');
-      							echo form_close();
-      							?>
-                                <div class="clearfix"></div>
-                                <?php 	
-                                	/*                               
-                                	// Get Flash data on view 
-									$message_error = $this->session->flashdata('message_name');
-									
-	                                if(isset($message_error)){
-										if($message_error){
-											echo '<div class="alert alert-danger alert-dismissible" role="alert">';
-											echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-											echo '<strong>Oh snap!</strong> mude algumas coisas e tente novamente.';
-											echo '</div>';	
-										}
-									}
-									*/									
-								?>
-                            </div>
-                        </form>      
-                    </div>
-                </li> <!-- dropdown -->
-                <?php 
-				}
 			
-			?>
-            
+            <?php
+            if(isset($logout)){
+            ?>				
+
+                <li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35">
+                    <a title="Logout" href="<?php echo base_url()."admin/logout_home"?>"><?php echo (isset($nomeUsuario) ? $nomeUsuario." - " : ''); ?>Logout</a>
+                </li>
+
+            <?php 
+            } else { 
+            ?>	
+
+                <li class="dropdown">
+                    <a href="<?php echo base_url()."auth" ?>">
+                        Login
+                    </a>
+                </li>
+
+            <?php 
+            } 
+            ?>
                
             </ul> <!-- nav nabvar-nav -->
             

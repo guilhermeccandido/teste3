@@ -47,15 +47,18 @@
 
 $active_group = 'default';
 $active_record = TRUE;
+
+// DEV
+
 /*
-$db['default']['hostname'] = 'svr11.ravehost.com.br';
-$db['default']['port']     = 1433;
-$db['default']['username'] = 'Prosul_mg';
-$db['default']['password'] = 'Eur0K0rp';
-$db['default']['database'] = 'rafaell_db_sgp_mg';
-$db['default']['dbdriver'] = 'sqlsrv';
+$db['default']['hostname'] = 'localhost';
+$db['default']['port']     = '5432';
+$db['default']['username'] = 'default';
+$db['default']['password'] = 'secret';
+$db['default']['database'] = 'db_covide';
+$db['default']['dbdriver'] = 'postgre';
 $db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = FALSE;
+$db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
@@ -65,6 +68,8 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 */
+
+// PROD
 
 $db['default']['hostname'] = '10.100.10.39';
 $db['default']['port']     = '5435';
@@ -83,9 +88,9 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
-
 // CONTRATOS SIAC
 
+/*
 $db['siac']['hostname'] = '10.100.10.144\MSSQL';
 $db['siac']['username'] = 'sharepoint_acc_hom';
 $db['siac']['password'] = 'spacchom';
@@ -101,6 +106,7 @@ $db['siac']['dbcollat'] = 'utf8_general_ci';
 $db['siac']['swap_pre'] = '';
 $db['siac']['autoinit'] = TRUE;
 $db['siac']['stricton'] = FALSE;
+*/
 
 /*
 $db['default']['hostname'] = '10.100.10.156';
