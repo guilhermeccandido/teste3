@@ -9,6 +9,17 @@ $config['oauth2_host'] = 'https://servicos.dnit.gov.br/identidade';
 $config['oauth2_client_id'] = 'evteateste';
 $config['oauth2_secret_key'] = 'Senha123$';
 $config['oauth2_call_back'] = 'http://localhost/ste/sgplan-evtea/signin_oidc';
+$config['oauth2_jwt_public_key'] = <<<EOD
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArdakN+RbPwpirAr2xyBB
+mi2NRtxGrWy02yR0gwO3yCwR2iQFXehng7yDWv6SfPyhGFoXV6efK/1bUgrnhRB1
+RnrIjS/QPu7n7la2L2Fv63AI92mNtMhNkOcBXzDrvKA3KciQmSI+8jFwHdkyqwtY
+7YZklCEG0aFcdZq9QgXQRSZF9exU7qcG3HqVAKlSKk4gjhTYBH0sGEX/iiGWhwRl
+uXjG/BvHneyrn7vGxBxPX3n9ssUfa6UZQIUPyuruLQwdg/vlOuO/H8JhLsptLgX1
+JgtCca/gb4molfjC5/0lAiW54fiRSgiM2WwlmD7KIxoIouvhXuqicLovsMxaLKeb
+xQIDAQAB
+-----END PUBLIC KEY-----
+EOD;
 
 /*
 |--------------------------------------------------------------------------
