@@ -809,6 +809,19 @@ const VIEW_FOLDER = 'admin/pas_relatorios';
 		$this->load->view('includes/template', $data);
 	}
 	
+	public function fiscalizacao_mensal()
+	{
+		$data = array();
+		$data = array_merge($data, $this->get_acesso_user(true));
+		
+		$this->load->model('pas_relatoriosdao');
+		$relatorios = new pas_relatoriosdao();
+		$response = $relatorios->get_fiscalizacao_mensal();
+		$data['response'] = $response;
+		$data['main_content'] = 'admin/pas_relatorios/relatorio_fiscalizacao_mensal';
+		$this->load->view('includes/template', $data);
+	}
+
 	public function quantidade_itens_analista_contrato(){
 		
 		$data = array();

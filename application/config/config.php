@@ -35,7 +35,7 @@ EOD;
 | path to your installation.
 |
 */
-$config['base_url']	= 'https://servicos.dnit.gov.br/sgplan/';
+$config['base_url']	= 'http://localhost/ste/sgplan-evtea/';
 
 /*
 |--------------------------------------------------------------------------
