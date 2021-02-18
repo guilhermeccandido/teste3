@@ -49,7 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 // DEV
-
+/*
 $db['default']['hostname'] = 'localhost';
 $db['default']['port']     = '5432';
 $db['default']['username'] = 'postgres';
@@ -66,9 +66,10 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+*/
 
 // PROD
-/*
+
 $db['default']['hostname'] = '10.100.10.39';
 $db['default']['port']     = '5435';
 $db['default']['username'] = 'postgres';
@@ -85,7 +86,7 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-*/
+
 // CONTRATOS SIAC
 
 /*
