@@ -49,12 +49,11 @@ $active_group = 'default';
 $active_record = TRUE;
 
 // DEV
-
 /*
 $db['default']['hostname'] = 'localhost';
 $db['default']['port']     = '5432';
-$db['default']['username'] = 'default';
-$db['default']['password'] = 'secret';
+$db['default']['username'] = 'postgres';
+$db['default']['password'] = '123123123';
 $db['default']['database'] = 'db_covide';
 $db['default']['dbdriver'] = 'postgre';
 $db['default']['dbprefix'] = '';

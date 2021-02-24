@@ -189,6 +189,23 @@ if(isset($link_acessos)){
                            </div>
                        </article> <!-- mind-features-item -->
                    </div>
+
+                   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                       <article class="mind-features-item hover animated bounceInRight animation-delay-6">
+                           <div class="item-icon"  style="padding : 0;" >
+                           <a href="<?php echo base_url('pas_relatorios/fiscalizacao_mensal'); ?>">
+                               <img alt="" style="width: 260px;" src="<?php echo base_url(); ?>assets/portal/img/relatorios.png">
+                           </a>
+                           </div>
+                           <div class="item-content menu-transparent" style="background-color:#bf0000;">
+                               <h3><a href="<?php echo base_url('pas_relatorios/fiscalizacao_mensal'); ?>">Relatório de Fiscalização Mensal</a></h3>
+                               <p>
+                               Relatório apresenta o último movimento de todos os produtos de todos os lotes contratados.
+                               </p>
+                               <a href="<?php echo base_url('pas_relatorios/fiscalizacao_mensal'); ?>" class="btn btn-success pull-right">Acesso</a>
+                           </div>
+                       </article> <!-- mind-features-item -->
+                   </div>
                 </div>
             </div>
         </section>

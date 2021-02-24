@@ -243,6 +243,14 @@ const VIEW_FOLDER = 'admin/pas_relatorios';
 			return $query->result_array();
 		}
 
+		function get_fiscalizacao_mensal()
+		{
+			$this->load->database();
+			$strQry = "SELECT * FROM vw_relatorio_completo";
+			$query = $this->db->query($strQry);
+			return $query->result();
+		}
+
 
 		
 		
