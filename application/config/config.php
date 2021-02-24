@@ -8,7 +8,7 @@
 $config['oauth2_host'] = 'https://servicos.dnit.gov.br/identidade';
 $config['oauth2_client_id'] = 'evteateste';
 $config['oauth2_secret_key'] = 'Senha123$';
-$config['oauth2_call_back'] = 'http://localhost/ste/sgplan-evtea/signin_oidc';
+$config['oauth2_call_back'] = 'https://servicos.dnit.gov.br/sgplan/signin_oidc';
 $config['oauth2_jwt_public_key'] = <<<EOD
 -----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArdakN+RbPwpirAr2xyBB
