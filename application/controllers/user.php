@@ -48,8 +48,13 @@ class User extends App_controller {
 		}
 		else // incorrect username or password
 		{
-			$data['message_error'] = TRUE;
-			$this->load->view('admin/login', $data);
+			$data['slide_show'] = true;
+			$data['sobre_nos'] = true;
+			$data['message_error'] = true;
+
+			//load the view
+			$data['main_content'] = 'portal/home/index';
+			$this->load->view('includes/portal_template', $data);
 		}
 		
 	}	

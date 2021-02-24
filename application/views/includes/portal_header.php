@@ -105,6 +105,10 @@
 
 <div class="boxed">
 
+<?php if (isset($message_error)): ?>
+<p align="center" class="alert alert-danger"><strong>Usuário inválido ou inexistente na base do SGPLAN EVETEA</strong></p>
+<?php endif; ?>
+
 <header id="header" class="hidden-xs">
     <div class="container">
         <div id="header-title">
@@ -127,8 +131,6 @@
         </div>
     </div> <!-- container -->
 </header> <!-- header -->
-
-
 
 <nav class="navbar navbar-static-top navbar-mind" role="navigation">
     <div class="container">
@@ -193,19 +195,21 @@
             <?php 
             } else { 
             ?>	
-
+                
                 <li class="dropdown">
                     <a href="<?php echo base_url()."auth" ?>">
                         Login
                     </a>
                 </li>
-
+                
             <?php 
             } 
             ?>
                
-            </ul> <!-- nav nabvar-nav -->
+            </ul> <!-- nav nabvar-nav -->            
             
         </div><!-- navbar-collapse -->
+
     </div> <!-- container -->
+
 </nav> <!-- navbar navbar-default -->
