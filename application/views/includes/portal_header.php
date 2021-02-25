@@ -106,7 +106,9 @@
 <div class="boxed">
 
 <?php if (isset($message_error)): ?>
-<p align="center" class="alert alert-danger"><strong>Usuário inválido ou inexistente na base do SGPLAN EVETEA</strong></p>
+<p align="center" class="alert alert-danger">
+    <strong>Opa!</strong> Parece que você não possui permissão neste sistema, solicite acesso através do e-mail <strong>sistemas.cgplan@dnit.gov.br</strong>
+</p>
 <?php endif; ?>
 
 <header id="header" class="hidden-xs">
