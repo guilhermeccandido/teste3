@@ -30,7 +30,7 @@
 	}
 	$dataSet = json_encode($dataSet);
 
-	$nameFile  = 'fiscalizacao_mensal'.date('Y-m-d').'.csv';
+	$nameFile  = 'fiscalizacao-mensal-de-'. date('d-m-Y') .'-referente-ano-' . $anoSelected . '.csv';
     $pathFile = PAS_RELATORIOS_FOLDER . $nameFile;
 
     if (!file_exists($pathFile)) {
@@ -67,6 +67,26 @@
 			<h3>Baixar Relatório</h3>
 			
 			<a href="<?php echo base_url('assets/gestao_estudos_projetos/pas/relatorios').'/'.$nameFile ?>"><img src="<?php echo base_url('assets/img/icons/xls.png');?>" width="64"  height="64" /></a>	
+			
+			<p><br /></p>
+			<input type="hidden" name="url-relatorio" id="url-relatorio" value="<?php echo base_url('pas_relatorios/fiscalizacao_mensal'); ?>" />
+			<span>Filtro de pesquisa:</span>&nbsp;
+			<select name="cmb-ano" id="cmb-ano">
+				<?php
+				$ano = date("Y");
+				while($ano >= 2000) {
+					if ($anoSelected == $ano) {
+						echo "<option value='$ano' selected='selected'>$ano</option>";
+					}
+					else{
+						echo "<option value='$ano'>$ano</option>";
+					}					
+					$ano--;
+				}
+				?>
+			</select>
+			&nbsp;
+			<span>Resultados referentes ao ano: <strong><?php echo $anoSelected; ?></strong></span>
 			<p><br /></p>
 			<div class="table-responsive"><table id="grid" class="display" width="100%"></table></div>
                         
@@ -139,6 +159,11 @@
 				{ title: "Descricao" }
 			]
 		} );
+
+		$('#cmb-ano').on('change', function(){
+			let url = $('#url-relatorio').val() + '/ano/' + $('#cmb-ano').val();
+			$(location).attr('href',url);
+		});
 
 	});
 </script>

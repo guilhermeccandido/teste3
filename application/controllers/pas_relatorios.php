@@ -809,16 +809,22 @@ const VIEW_FOLDER = 'admin/pas_relatorios';
 		$this->load->view('includes/template', $data);
 	}
 	
-	public function fiscalizacao_mensal()
+	public function fiscalizacao_mensal($param = null, $value = null)
 	{
 		$data = array();
 		$data = array_merge($data, $this->get_acesso_user(true));
+
+		if($value == null){ 
+			$value = date("Y"); 
+		}
 		
 		$this->load->model('pas_relatoriosdao');
 		$relatorios = new pas_relatoriosdao();
-		$response = $relatorios->get_fiscalizacao_mensal();
+		$response = $relatorios->get_fiscalizacao_mensal($value);
 		$data['response'] = $response;
 		$data['main_content'] = 'admin/pas_relatorios/relatorio_fiscalizacao_mensal';
+		$data['anoSelected'] = $value;
+
 		$this->load->view('includes/template', $data);
 	}
 

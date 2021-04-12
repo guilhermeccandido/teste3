@@ -840,6 +840,7 @@ $route['admin/gestao_estudos_projetos/update'] = 'gestao_estudos_projetos/update
 $route['admin/gestao_estudos_projetos/update/(:any)'] = 'gestao_estudos_projetos/update/$1';
 $route['admin/gestao_estudos_projetos/delete/(:any)'] = 'gestao_estudos_projetos/delete/$1';
 $route['admin/gestao_estudos_projetos/(:any)'] = 'gestao_estudos_projetos/index/$1'; //$1 = page number
+$route['admin/gestao_estudos_projetos/(:any)/(:any)'] = 'gestao_estudos_projetos/index/$1/$2'; //$1 = page number, $2 year
     
 
 // PAS
@@ -858,6 +859,8 @@ $route['admin/pas/contratos/(:any)'] = 'pas/contratos/$1';
 $route['admin/pas/add_img'] = 'pas/add_img';
 $route['admin/pas/relatorios'] = 'pas/relatorios';
 $route['admin/pas/relatorios/(:any)'] = 'pas/relatorios/$1';
+$route['admin/pas/relatorios/(:any)/ano/(:any)'] = 'pas/relatorios/$1/ano/$2';
+
 // events
 $route['admin/pas/get_pas_events'] = 'pas/get_pas_events';
 $route['admin/pas/get_pas_all_events'] = 'pas/get_pas_all_events';

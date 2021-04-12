@@ -243,10 +243,17 @@ const VIEW_FOLDER = 'admin/pas_relatorios';
 			return $query->result_array();
 		}
 
-		function get_fiscalizacao_mensal()
+		function get_fiscalizacao_mensal($ano)
 		{
 			$this->load->database();
-			$strQry = "SELECT * FROM vw_relatorio_completo";
+
+			$strQry = "
+			SELECT * 
+			FROM vw_relatorio_completo 
+			WHERE 1=1
+			  AND to_char(data_protocolo,'YYYY') = '{$ano}'
+			";
+			
 			$query = $this->db->query($strQry);
 			return $query->result();
 		}
