@@ -1,4 +1,15 @@
 <?php
+
+	function convertString($string) {
+		$string = preg_replace(
+			"/[^ \na-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑа-я0-9`~\!@#\$%\^&\*\(\)_\+\-\=\[\]\{\}\\\|;\:'\",\.\/\<\>\?]+/ui"
+			, ""
+			, $string
+		);
+		$string = preg_replace('~\n?~', "", $string);
+		return $string;
+	}
+
 	// CODE
     foreach($link_acessos as $item){
 		
@@ -19,7 +30,8 @@
 	$dataSet = array();
 	foreach($csvResponse as $item){
         // CSV Body
-        $relatorio .= '"=""'. $item->contrato .'""";'. $item->id .';'. $item->id_lote .';'. $item->titulo_lote .';'. $item->uf .';'. $item->km_inicial .';'. $item->km_final .';'. $item->extensao .';'. $item->subtrecho .';'. $item->nr_lote .';'. $item->id_produto .';'. $item->nm_produto .';'. $item->data_ini .';'. $item->data_fim .';'. $item->data_ini_planejada .';'. $item->data_fim_planejada .';'. $item->nm_status .';'. $item->data_protocolo .';'. $item->descricao .';'. $item->nome_responsavel.';'."\n";		
+		$descricao = convertString($item->descricao);
+        $relatorio .= '"=""'. $item->contrato .'""";'. $item->id .';'. $item->id_lote .';'. $item->titulo_lote .';'. $item->uf .';'. $item->km_inicial .';'. $item->km_final .';'. $item->extensao .';'. $item->subtrecho .';'. $item->nr_lote .';'. $item->id_produto .';'. $item->nm_produto .';'. $item->data_ini .';'. $item->data_fim .';'. $item->data_ini_planejada .';'. $item->data_fim_planejada .';'. $item->nm_status .';'. $item->data_protocolo .';'. $descricao .';'. $item->nome_responsavel.';'."\n";		
 		
 		$dataIni = new DateTime($item->data_ini);
 		$dataFim = new DateTime($item->data_fim);
