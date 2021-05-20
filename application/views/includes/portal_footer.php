@@ -64,7 +64,7 @@
 */
 ?>
 <footer id="footer">
-    <p>&copy; 2016 <a href="<?php echo base_url(); ?>home" >SGPLAN</a></p>
+    <p>&copy; <?php echo date('Y'); ?> <a href="<?php echo base_url(); ?>home" >SGPLAN</a></p>
 </footer>
 
 </div> <!-- boxed -->

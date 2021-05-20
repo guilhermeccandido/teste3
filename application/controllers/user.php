@@ -39,22 +39,13 @@ class User extends App_controller {
 		$usuario = new Usuario();
 		$validaAcesso = $usuario->confirmarCredenciais($login);
 
-		if($validaAcesso){
-		
+		if ($validaAcesso) {		
 			$dados = $usuario->criarSessao($login);
 			$this->session->set_userdata($usuario->criarSessao($login));
-			redirect('admin/anteprojetos');
-		
+			redirect('home');		
 		}
-		else // incorrect username or password
-		{
-			$data['slide_show'] = true;
-			$data['sobre_nos'] = true;
-			$data['message_error'] = true;
-
-			//load the view
-			$data['main_content'] = 'portal/home/index';
-			$this->load->view('includes/portal_template', $data);
+		else {
+			redirect('auth');
 		}
 		
 	}	
@@ -114,8 +105,6 @@ class User extends App_controller {
 	 */
 	function validate_credentials_temp()
 	{
-	
-		
 		$dadosPagina = array();
 		$login = $this->input->post('login');
 		$senha = $this->input->post('senha');
@@ -124,39 +113,25 @@ class User extends App_controller {
 		$usuario = new Usuario();
 		$validaAcesso = $usuario->confirmarCredenciais($login,$senha);
 	
-		if($validaAcesso){
-	
+		if ($validaAcesso) {
 			$dados = $usuario->criarSessao($login);
 			$this->session->set_userdata($usuario->criarSessao($login));
-			
-			//$this->session->set_flashdata('message_error', 'false');
-			
 			redirect('home');
-	
 		}
-		else // incorrect username or password
-		{
-			// Set flash data 
-			//$this->session->set_flashdata('message_error', 'true');
-			//echo 'Usuário ou Senha inválida!'
-			//$this->form_validation->set_error_delimiters('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>', '</strong></div>');
-			echo '<script>alert("Usuário ou Senha inválida!"); location.href="/sgplan/home" </script>';
-			//var_dump("oi");
-			//redirect('home');			
-			//$this->load->view('home.php');			
+		else {
+			echo '<script>alert("Usuário ou Senha inválida!"); location.href="/sgplan/home" </script>';			
 		}
-	
 	}
-	
 	
 	/**
     * Destroy the session, and logout the user.
     * @return void
     */		
 	function logout()
-	{
+	{	
+		unset($_SESSION);	
 		$this->session->sess_destroy();
-		redirect('admin');
+		redirect('https://servicos.dnit.gov.br/identidade/Account/Logout');
 	}
 	
 	/**
@@ -164,9 +139,10 @@ class User extends App_controller {
 	 * @return void
 	 */
 	function logout_home()
-	{
+	{		
+		unset($_SESSION);
 		$this->session->sess_destroy();
-		redirect('home');
+		redirect('https://servicos.dnit.gov.br/identidade/Account/Logout');
 	}
 
 }

@@ -80,8 +80,9 @@ class App_controller extends CI_Controller {
 	
 	function logout($target = null)
 	{
+		unset($_SESSION);
 		$this->session->sess_destroy();
-		$this->load->view($target);
+		redirect('https://servicos.dnit.gov.br/identidade/Account/Logout');
 	}
 	function set_conf($fileId){
 		$error = "";
