@@ -45,7 +45,14 @@ class User extends App_controller {
 			redirect('home');		
 		}
 		else {
-			redirect('auth');
+			$data['slide_show'] = true;
+			$data['sobre_nos'] = true;
+			$data['message_error'] = true;
+
+			//load the view
+			$data['main_content'] = 'portal/home/index';
+			$this->load->view('includes/portal_template', $data);
+
 		}
 		
 	}	
