@@ -180,28 +180,38 @@
 	   	</div>
 <script>
 
-$('select[name=uf]').on({
-    change: function(){
+    // testei aqui e esse funciona
+	$('select[name=uf]').on({
+		change: function(){
 
-    	var self = $(this),
-		   uf   = $('select[name=uf] option:selected').text(),
-		   el   = $('select[name=rodovia]');
-		  el.find('option').remove();
-		  el.prepend('<option value="<?php echo  $rodo ?>"><?php echo $rodo ?></option>');
-		  el.attr('disabled');    
-		  $.getJSON('json_snv/vw_snv_rod.json',		 
-		  function( data ) {
-			  console.log(data);			  
-			  for (var i = data.filter(c => c.unidade_federacao === uf).length - 1; i >= 0; i--) {				
-				el.prepend($('<option>', { 
-			        value: data[i]['codigo_br'],
-			        text : data[i]['codigo_br'] 
-			    }));
-		      };
+			var self = $(this),
+			uf   = $('select[name=uf] option:selected').text(),
+			el   = $('select[name=rodovia]');
+			el.find('option').remove();
+			el.prepend('<option value="<?php echo  $rodo ?>"><?php echo $rodo ?></option>'); // essa parte eu troquei para pq n consegui acessar o bd el.prepend('<option value="teste">teste</option>'); 
+			el.attr('disabled');    
+			$.getJSON('<?php echo base_url(); ?>assets/json_snv/vw_snv_rod.json',		 
+			function( data ) {				
+				if (Array.isArray(data.vw_snv_rod)) {
+					var filteredData = data.vw_snv_rod.filter(function(item) {
+						return item.unidade_federacao === uf;
+					});
+					var codigosUnicos = new Set();
+					filteredData.forEach(function(item) {
+						codigosUnicos.add(item['codigo_br']);
+					});
+					var codigosOrdenados = Array.from(codigosUnicos).sort();                
+					codigosOrdenados.forEach(function(codigo) {
+						el.append($('<option>', {
+							value: codigo,
+							text: codigo
+						}));
+					});
+				}
 			});
-	}
-   
-});	
+		}		
+	});
+	
 
 	var	uf   = $('select[name=uf] option:selected').text(),
 	el   = $('select[name=rodovia]');

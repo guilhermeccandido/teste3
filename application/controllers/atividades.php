@@ -6,7 +6,7 @@ const VIEW_FOLDER = 'admin/atividades';
     public function __construct()
 		    {
 	parent::__construct();
-        $this->load->model('atividadesdao');
+        //$this->load->model('atividadesdao');
         
     }
     	
@@ -15,11 +15,11 @@ const VIEW_FOLDER = 'admin/atividades';
 		$data = array();
     	$data = array_merge($data, $this->get_acesso_user(true));
     	
-    	$id_usuario = $this->session->userdata('id');
-    	$dateInterval = $this->getDateInterval();
+    	// $id_usuario = $this->session->userdata('id');
+    	// $dateInterval = $this->getDateInterval();
     	
-    	$model = new atividadesdao();
-    	$data['atividades'] = $model->get_atividades_by_id_usuario_ativas_interval($id_usuario, $dateInterval);
+    	// $model = new atividadesdao();
+    	$data['atividades'] = [];
 
         //load the view
         $data['main_content'] = 'admin/atividades/list';
