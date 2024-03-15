@@ -189,17 +189,13 @@ $('select[name=uf]').on({
 		  el.find('option').remove();
 		  el.prepend('<option value="<?php echo  $rodo ?>"><?php echo $rodo ?></option>');
 		  el.attr('disabled');    
-		  $.getJSON('https://servicos.dnit.gov.br/arcgis/rest/services/DNIT_Geo/SNV/MapServer/8/query?where=sg_uf+%3D+%27'+uf+'%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=vl_br&returnGeometry=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=true&f=pjson' 
-		  ,
-		 
+		  $.getJSON('json_snv/vw_snv_rod.json',		 
 		  function( data ) {
-			  console.log(data);	
-			  
-			  for (var i = data['features'].length - 1; i >= 0; i--) {
-				
+			  console.log(data);			  
+			  for (var i = data.filter(c => c.unidade_federacao === uf).length - 1; i >= 0; i--) {				
 				el.prepend($('<option>', { 
-			        value: data['features'][i]['attributes']['vl_br'],
-			        text : data['features'][i]['attributes']['vl_br'] 
+			        value: data[i]['codigo_br'],
+			        text : data[i]['codigo_br'] 
 			    }));
 		      };
 			});
@@ -212,15 +208,13 @@ $('select[name=uf]').on({
 	el.find('option').remove();
 	el.prepend('<option value="<?php echo  $rodo ?>"><?php echo $rodo ?></option>');
 	el.attr('disabled');    
-	$.getJSON('https://servicos.dnit.gov.br/arcgis/rest/services/DNIT_Geo/SNV/MapServer/8/query?where=sg_uf+%3D+%27'+uf+'%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=vl_br&returnGeometry=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=true&f=pjson' 
-	,
-	
+	$.getJSON('json_snv/vw_snv_rod.json',	
 	function( data ) {
-		  for (var i = data['features'].length - 1; i >= 0; i--) {
+		  for (var i = data.filter(c => c.unidade_federacao === uf).length - 1; i >= 0; i--) {
 			
 			el.prepend($('<option>', { 
-		        value: data['features'][i]['attributes']['vl_br'],
-		        text : data['features'][i]['attributes']['vl_br'] 
+		        value: data[i]['codigo_br'],
+			    text : data[i]['codigo_br'] 
 		    }));
 	   };
 	   
